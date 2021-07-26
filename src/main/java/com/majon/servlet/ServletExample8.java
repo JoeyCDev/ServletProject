@@ -32,17 +32,28 @@ public class ServletExample8 extends HttpServlet{
 		
 		out.println("<html><head><title>검색기능</title></head>");
 		out.println("<body>");
+		
+		// 수정된 repalce 이용 방법
+		
 		for(int i=0; i<list.size();i++) {
 			if(list.get(i).contains(keyword)) {
-				int position = list.get(i).indexOf(keyword);
-				out.println(list.get(i).substring(0,position) + "<b>" + list.get(i).substring(position,position+keyword.length()) + "</b>"+ 
-				list.get(i).substring(position+keyword.length())+ "<br><hr>");
+				String newKeyword = "<b>"+keyword+"</b>";
+				String newString = list.get(i).replace(keyword, newKeyword);
+				out.println(newString + "<br><hr>");
 			}
-			
 		}
 		
+		// 예전 substring 이용 방법
 		
-	
+//		for(int i=0; i<list.size();i++) {
+//			if(list.get(i).contains(keyword)) {
+//				int position = list.get(i).indexOf(keyword);
+//				out.println(list.get(i).substring(0,position) + "<b>" + list.get(i).substring(position,position+keyword.length()) + "</b>"+ 
+//				list.get(i).substring(position+keyword.length())+ "<br><hr>");
+//			}
+//			
+//		}
+		
 		out.println("</body></html>");
 		
 	}
