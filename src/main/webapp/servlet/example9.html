@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Get Method 와 form 1 - servlet</title>
+<title>Post Method 1</title>
 <!-- bootstrap CDN link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -12,27 +12,18 @@
 </head>
 <body>
 
-<h1>주문</h1>
-
-<form method="get" action="/servlet/example7">
-
-	<label>주소</label><br>
-	<input type="text" name="address">
+<div class="container mt-3">
+<h1>입사지원</h1>
+<form method="post" action="/servlet/example9">
+	<input type="text" name="name" class="form-control w-25">
 	<br>
-	<br>
-	<label>결제카드</label><br>
-	<input type="text" name="card_name"> 
-	<br>
-	<br>
-	<label>가격</label><br>
-	<input type="text" name="price">  
-	<br>
-	<br>
+	<div class="form-group">
+		<label for="resume">자기 소개서</label>
+		<textarea name="resume" class="form-control" rows="10"></textarea>
+	</div>
 	
-	<input type="submit" value="주문">
-	
-
+	<input type="submit" value="지원" class="btn w-100 btn-primary">
+</div>	
 </form>
-
 </body>
 </html>
