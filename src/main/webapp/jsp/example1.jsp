@@ -13,7 +13,7 @@
 <!-- 1. 점수들의 평균 구하기 -->
 <%
 int sum=0;
-int avg=0;
+double avg=0;
 
 int[] scores = {80, 90, 100, 95, 80};
 
@@ -66,10 +66,10 @@ score=(int)(sum2/scoreList.size()*100);
 String birthDay = "20010820";
 int birthYear = Integer.parseInt(birthDay.substring(0, 4));
 Date now = new Date();
-SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
 String formattedDate = formatter.format(now);
-int nowYear = Integer.parseInt(formattedDate.substring(0, 4));
-int age = nowYear - birthYear + 1;
+int currentYear = Integer.parseInt(formattedDate);
+int age = currentYear - birthYear + 1;
 %>
 
 <strong><%=birthDay%> 의 나이는 <%=age %>살 입니다.</strong>
