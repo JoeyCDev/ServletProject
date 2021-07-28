@@ -49,7 +49,7 @@ public class ServletExample10 extends HttpServlet{
 			
 			}
 			
-			out.println("</body></htlm>");
+			out.println("</body></html>");
 			
 			
 			
