@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Get Method - 링크</title>
+<title>계산결과 출력</title>
 <!-- bootstrap CDN link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -14,12 +14,30 @@
 </head>
 <body>
 
-<div class="container">
-	<h1>날짜, 시간 링크</h1>
-	<br>
-	<a class="btn btn-primary text-white" href="/jsp/example2_2.jsp?text=time">현재 시간 확인</a>
-	<a class="btn btn-success text-white" href="/jsp/example2_2.jsp?text=date">현재 날짜 확인</a>
+	<%
+		int num1 = Integer.parseInt(request.getParameter("number1"));
+		int num2 = Integer.parseInt(request.getParameter("number2"));
+		String operator = request.getParameter("operator");
+		
+		double ans = 0;
+		
+		if(operator.equals("+")){
+			ans = num1 + num2;
+		}else if(operator.equals("-")){
+			ans = num1 - num2;
+		}else if(operator.equals("X")){
+			ans = (double)num1 * num2;
+		}else{
+			ans = (double)num1/num2;
+		}
+		
+	%>
+
+<div class="container mt-3">
 	
+	<h1>계산 결과</h1>
+	<%=num1 %> <%=operator %> <%=num2 %> = <span class="text-primary"><%=ans %></span>
+
 </div>
 
 </body>

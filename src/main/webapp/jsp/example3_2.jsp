@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Get Method - 링크</title>
+<title>BMI 결과</title>
 <!-- bootstrap CDN link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -13,13 +13,31 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+<% 
+//BMI =  몸무게 / ((키 / 100.0) * (키 / 100.0));
+
+int height = Integer.parseInt(request.getParameter("height"));
+int weight = Integer.parseInt(request.getParameter("weight"));
+
+double bmi = weight / ((height / 100.0) * (height / 100.0));
+
+String state = null;
+if(bmi<20){
+	state = "저체중";
+}else if(bmi <=25){
+	state = "정상";
+}else if(bmi <=  30){
+	state = "과체중";
+}else{
+	state = "비만";
+}
+
+%>
 
 <div class="container">
-	<h1>날짜, 시간 링크</h1>
-	<br>
-	<a class="btn btn-primary text-white" href="/jsp/example2_2.jsp?text=time">현재 시간 확인</a>
-	<a class="btn btn-success text-white" href="/jsp/example2_2.jsp?text=date">현재 날짜 확인</a>
-	
+	<h1>BMI 측정결과</h1>
+	<div class="display-4"> 당신은 <span class="text-info"><%=state %></span>입니다.</div>
+	<div>BMI 수치: <%=bmi %><div>
 </div>
 
 </body>

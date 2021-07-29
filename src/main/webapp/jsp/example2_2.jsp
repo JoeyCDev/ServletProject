@@ -10,25 +10,29 @@
 </head>
 <body>
 
-<% Date now = new Date();
-SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-String formattedDate = formatter.format(now);
-int currentYear = Integer.parseInt(formattedDate.substring(0,4));
-int currentMonth = Integer.parseInt(formattedDate.substring(5,7));
-int currentDay = Integer.parseInt(formattedDate.substring(8,10));
-int currentHour = Integer.parseInt(formattedDate.substring(11,13));
-int currentMinute = Integer.parseInt(formattedDate.substring(14,16));
-int currentSecond = Integer.parseInt(formattedDate.substring(17,19));
+<% 
+	String text = request.getParameter("text");
+	Date now = new Date();
+	String string = null;
+	if(text.equals("date")){
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 M월 d일");
+		String formattedDate = formatter.format(now);
+		string = "오늘 날짜 " + formattedDate;
+	}else{
+		SimpleDateFormat formatterTime = new SimpleDateFormat("H시 m분 s초");
+		String formattedTime = formatterTime.format(now);
+		string = "현재 시간 " + formattedTime;
 
+	}
+
+	
 %>
 
-<% if((request.getParameter("text")=="time")){%>
-	현재 시간 <b><%=currentHour %></b>시 <b><%=currentMinute %></b>분 <b><%=currentSecond %></b>초
-<% }%>
+<div>
+	<h1><%=string %></h1>
+</div>
 
-<% if((request.getParameter("text")=="date")){%>
-	오늘 날짜 <b><%=currentYear %></b>년 <b><%=currentMonth %></b>월 <b><%=currentDay %></b>일
-<% }%>
+
 	
 
 
