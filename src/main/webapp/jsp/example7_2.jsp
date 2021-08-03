@@ -100,22 +100,12 @@
 			<%
 			for(Map element : list){
 		       
-					if (element.get("menu").equals(menuSearch) &&(optionSelected==null)) {
-						String storeName = (String)element.get("name");
-						double point = (double)element.get("point");	
+					if (element.get("menu").equals(menuSearch)) {
+						
 					
-			%>
-			<tr>
-				<td><%=menuSearch%></td>
-				<td><%=storeName%></td>
-				<td><%=point %></td>
-				
-			</tr>
-			<%
+		
 			
-					} 
-					else if(element.get("menu").equals(menuSearch)&&(optionSelected.equals("on"))){
-						if((double)(element.get("point"))>=4.0){
+					if(optionSelected==null||(optionSelected.equals("on")&&(Double)element.get("point")>=4.0)){
 						String storeName = (String)element.get("name");
 						double point = (double)element.get("point");	
 	
@@ -128,7 +118,7 @@
 						</tr>
 		
 					
-			<% } } } 
+			<% } } }
 			%>
 		
 			 <!-- 출력 안되는 방법
