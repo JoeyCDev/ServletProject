@@ -84,8 +84,7 @@
 			<tr>
 				<td><%=id %></td>
 				<td><img src = <%=bookCover %> height =120></td>
-				<td class="text-center"><span class="text-primary h1"><a href="/jsp/example8_2.jsp?book_cover=<%=bookCover%>&book_title=<%=bookTitle%>
-				&book_author=<%=bookAuthor %>&book_publisher=<%=bookPublisher %>">
+				<td class="text-center"><span class="text-primary h1"><a href="/jsp/example8_2.jsp?book_id=<%=id %>">
 				<%=bookTitle %></a></span></td>
 			</tr>
 		
