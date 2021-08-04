@@ -78,8 +78,6 @@
 				int id = Integer.parseInt(element.get("id").toString());
 				String bookCover = element.get("image").toString();
 				String bookTitle = element.get("title").toString();
-				String bookAuthor = element.get("author").toString();
-				String bookPublisher = element.get("publisher").toString();
 				%>
 			<tr>
 				<td><%=id %></td>
