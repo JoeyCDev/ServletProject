@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>템플릿 Layout 2</title>
+<title>음악 상세 정보</title>
 <!-- bootstrap CDN link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -93,44 +93,66 @@
     musicList.add(musicInfo);
 %>
 
+<%!
+	public String secondsToMinute(int seconds){
+		int minute;
+		int second;
+		String str  = "";
+		minute = seconds/60;
+		second = seconds%60;
+		str = str + minute + " : " + second;
+		return str;
+}
+%>
+<%
+	int requestId = Integer.parseInt(request.getParameter("id"));
+	String searchValue = request.getParameter("songSearch");
+%>
+<div class="ml-3 mt-3 mr-5">
 
-	<div class="ml-3 mt-3 mr-5">
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
-		<div class = "artist_container d-flex border border-success p-3" style ="height:280px;">
-				<div class="artist_profile_picture">
-					<img src= <%=artistInfo.get("photo")%> style="height:250px;"/>
-				</div>
-				<div class="artist_info ml-3">
-					<div class="display-4"><%=artistInfo.get("name") %></div>
-					<div class="display-5"><%=artistInfo.get("agency") %></div>
-					<div class="display-5"><%=artistInfo.get("debute") %></div>
-				</div>
-		</div>	
-		<div class = "music_container mt-3">
-		<h3>곡 목록</h3>
-		<table class="table">
-			<thead class="text-center">
-				<tr>
-					<th>no</th>	
-					<th>제목</th>
-					<th>앨범</th>
-				</tr>
-			</thead>
-			<tbody class="text-center">
-				<% for(Map<String, Object> element : musicList){
+		
+	<h3 class="mt-3">곡 정보</h3>
+	<div class = "artist_container d-flex border border-success p-3" style ="height:280px;">
+				<div class="album_cover">
+					<% for(Map<String,Object> element : musicList){ 
+						if((Integer)element.get("id") == requestId||((String)element.get("title")).equals(searchValue)){
 					%>
-					<tr>
-						<td><%=element.get("id") %></td>
-						<td><a href="/jspTemplate/example2/music_info.jsp?id=<%=element.get("id")%>"><%=element.get("title") %></a></td>
-						<td><%=element.get("album") %></td>
-					</tr>
-				<% } %>
-			</tbody>
-		</table>
-		</div>
-		<jsp:include page="footer.jsp"/>
+					<img src= <%=element.get("thumbnail")%> style="height:250px;"/>
+				</div>
+				<div class="music_info ml-3">
+					<div class="display-4"><%=element.get("title") %></div>
+					<div class="display-5 text-success mt-2 font-weight-bold"><%=element.get("singer") %></div>
+					<div class="album mt-2 text-secondary d-flex justify-content-between">
+						<div class="album">앨범</div>
+						<div class="album"><%=element.get("album") %></div>					
+					</div>
+					<div class="lap_time mt-2 text-secondary d-flex justify-content-between">
+						<div class="lap_time">재생시간</div>
+						<div class="lap_time font-weight-bold"><%=secondsToMinute((Integer)element.get("time"))%></div>					
+					</div>
+					<div class="composer mt-2 text-secondary d-flex justify-content-between">
+						<div class="composer">작곡가</div>
+						<div class="composer"><%=element.get("composer") %></div>					
+					</div>
+					<div class="lyricist mt-2 text-secondary d-flex justify-content-between">
+						<div class="lyricist">작사가</div>
+						<div class="lyricist"><%=element.get("lyricist") %></div>					
+					</div>
+				</div>
+				<% }  } %> 
 	</div>
-
+	<div class="lyrics_container mt-5"><h3>가사</h3>
+	<hr>
+	<div class="lyrics">
+	가사 정보 없음
+	</div>
+	<br>
+	<hr>
+	</div>
+	<jsp:include page="footer.jsp"/>
+</div>
+		
 </body>
 </html>

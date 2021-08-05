@@ -72,7 +72,7 @@
 						String channel = element.get("ch");
 						String channelName = element.get("name");
 						String category = element.get("category");
-						if((categoryRequest == null||categoryRequest.equals("전체")) || category.equals(categoryRequest)){
+						if(categoryRequest == null || category.equals(categoryRequest)){
 						%>	<tr>
 							<td><%=channel %></td>
 							<td><%=channelName %></td>
