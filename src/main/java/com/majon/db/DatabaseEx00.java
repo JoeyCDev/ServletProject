@@ -42,6 +42,14 @@ public class DatabaseEx00 extends HttpServlet{
 				
 			}
 			
+			 String insertQuery="INSERT INTO `used_goods`\r\n"
+			 		+ "(`title`,`price`,`description`,`sellerId`,`createdAt`,`updatedAt`)\r\n"
+			 		+ "VALUE('고양이 간식 팝니다.', 2000, '저히 고양이가 입맛이 까다로워서 안먹네요', 5, now(),now());";
+			 //실행한 행의 수를 업데이트 함 
+			 int count = statement.executeUpdate(insertQuery);
+			 
+			 out.println("삽입 성공!! " + count);
+			
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
