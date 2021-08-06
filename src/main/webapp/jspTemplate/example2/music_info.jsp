@@ -104,21 +104,23 @@
 		return str;
 }
 %>
-<%
-	int requestId = Integer.parseInt(request.getParameter("id"));
+<%	
+	int requestId = 0;
+	if(request.getParameter("id")!=null){
+		 requestId = Integer.parseInt(request.getParameter("id"));
+	}
 	String searchValue = request.getParameter("songSearch");
 %>
 <div class="ml-3 mt-3 mr-5">
 
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
-		
-	<h3 class="mt-3">곡 정보</h3>
-	<div class = "artist_container d-flex border border-success p-3" style ="height:280px;">
-				<div class="album_cover">
-					<% for(Map<String,Object> element : musicList){ 
-						if((Integer)element.get("id") == requestId||((String)element.get("title")).equals(searchValue)){
+		<% for(Map<String,Object> element : musicList){ 
+								if((Integer)element.get("id") == requestId||((String)element.get("title")).equals(searchValue)){
 					%>
+				<h3 class="mt-3">곡 정보</h3>
+				<div class = "artist_container d-flex border border-success p-3" style ="height:280px;">
+					<div class="album_cover">
 					<img src= <%=element.get("thumbnail")%> style="height:250px;"/>
 				</div>
 				<div class="music_info ml-3">
@@ -141,16 +143,19 @@
 						<div class="lyricist"><%=element.get("lyricist") %></div>					
 					</div>
 				</div>
-				<% }  } %> 
-	</div>
-	<div class="lyrics_container mt-5"><h3>가사</h3>
-	<hr>
-	<div class="lyrics">
-	가사 정보 없음
-	</div>
-	<br>
-	<hr>
-	</div>
+				</div>
+				<div class="lyrics_container mt-5"><h3>가사</h3>
+				<hr>
+				<div class="lyrics">
+				가사 정보 없음
+				</div>
+				<br>
+				<hr>
+				</div>
+				<%  }  
+				} %>
+	
+	
 	<jsp:include page="footer.jsp"/>
 </div>
 		
