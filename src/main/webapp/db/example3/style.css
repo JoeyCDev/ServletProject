@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+
+.bg-orange{
+	background-color: tomato;
+}
+.color-orange{
+	color:tomato;
+}
+
+.wrap-main{
+	height:1100px;
+}
+.wrap-submit{
+	height:700px;
+}
+
+.header-nav{
+	height:150px;
+}
+
+.main-section{
+	height:930px;
+}
+
+.grid{
+	display:grid;
+	grid-template-columns:repeat(auto-fill,363px);
+	grid-gap:10px 10px;
+	height: 900px;
+}
+.grid-item{
+	border: thin tomato solid;
+	padding:10px;
+	position:relative;
+}
+
+.grid-item:hover{
+	background-color: #ff8080;
+}
+.img-container{
+	height:180px;
+}
+.text-container{
+	height:90px;
+	position:absolute;
+	bottom:0;
+	
+}
+
+img{
+	width:100%;
+	height:100%;
+}

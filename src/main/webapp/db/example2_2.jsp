@@ -21,7 +21,7 @@
 			<input type="text" name="webName" class="form-control" style="width:555px;">
 			<label>사이트 주소:</label><br>
 			<input type="text" name="webUrl"  class="form-control"><br>
-			<button type="submit" class="btn btn-success" onclick="location.href='/db/example2.jsp'">추가</button>
+			<button type="submit" class="btn btn-success">추가</button>
 		
 		</form>
 	</div>
