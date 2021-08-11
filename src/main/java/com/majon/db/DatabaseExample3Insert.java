@@ -19,8 +19,7 @@ public class DatabaseExample3Insert extends HttpServlet{
 		
 		response.setContentType("text/html");
 		
-		int id = 0;
-		String nickname = request.getParameter("nickname");
+		String id = request.getParameter("nickname");
 		String title = request.getParameter("title");
 		String price = request.getParameter("price");
 		String description = request.getParameter("description");
@@ -32,21 +31,9 @@ public class DatabaseExample3Insert extends HttpServlet{
 		// nickname에 따른 아이디 가져오기
 		String selectQueryForId = "SELECT * FROM `seller`;";
 		ResultSet result = mysqlService.select(selectQueryForId);
+	
 		
-		try {
-			while(result.next()) {
-				if(result.getString("nickname").equals(nickname)) {
-					id = result.getInt("id");
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-;
+
 		
 		
 		
