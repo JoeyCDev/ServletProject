@@ -33,7 +33,7 @@
 						   ResultSet result = mysqlService.select(selectQuery);
 						   while(result.next()){
 						%>
-						<option value=<%=result.getString("nickname") %>><%=result.getString("nickname") %></option>
+						<option value=<%=result.getString("nickname")%>><%=result.getString("nickname") %></option>
 						<%} %>
 					</select>
 					<input type="text" class="form-control col-6" name="title" placeholder="제목" id="title">
